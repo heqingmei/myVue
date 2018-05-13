@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(user,index) in users" :calss="{'active': !index}">
+					{{user.name}}
+				</li>
+			</ul>
+			<button onclick="reverseUsers()">反转 </button>
+		</div>
+		<script src="myvue.js"></script>
+		<script>
+			var model = {
+				users: [{name: "王五"}, {name: "张三"}, {name: "李四"}]
+			}
+
+			var vue = new Vue({
+				el: "#app",
+				data: model
+			});
+
+			function reverseUsers(){
+				model.users.reverse();
+			}
+
+			window.setTimeout(function(){
+				model.users.push({name: "苍井空"})
+				console.log(model.users.length);
+			}, 2000)
+		</script>
+	</body>
+</html>
